@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+    Route::get('/dashboard', 'dashboard')->name('admin.dashboard')->middleware('admin');
     Route::get('/login', 'login')->name('admin.login');
 });
