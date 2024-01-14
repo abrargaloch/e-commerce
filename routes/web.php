@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function() {
-    return view('admin.layout.dashboard');
-})->name('admin.dashboard');
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+    Route::get('/login', 'login')->name('admin.login');
+});

@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
-
+@push('title')
+    <title>Admin Dashboard</title>
+@endpush
 @section('content')
 
 <div class="content-wrapper">
