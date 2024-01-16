@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use Vonage\Meetings\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,13 @@ Route::get('/', function () {
 });
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get('/dashboard', 'dashboard')->name('admin.dashboard')->middleware('admin');
-    Route::get('/login', 'login')->name('admin.login');
+
+    Route::match(['get', 'post'], '/login', 'login')->name('admin.login');
+    Route::get('/logout', 'logout')->name('admin.logout');
+
+    //admin middleware for group of routes for dashboard
+    Route::middleware('admin')->group(function() {
+       Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+    });
+
 });
