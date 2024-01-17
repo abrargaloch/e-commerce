@@ -38,7 +38,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Settings
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -46,13 +46,13 @@
               <li class="nav-item">
                 <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Update Password</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Update Admin Details</p>
                 </a>
               </li>
               <li class="nav-item">

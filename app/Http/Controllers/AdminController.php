@@ -13,8 +13,7 @@ class AdminController extends Controller
 
     public function login(Request $request) {
         if($request->isMethod('post')){
-
-            $vaildator = $request->validate([
+            $request->validate([
                 'email'     => 'required|email',
                 'password'  => 'required'
             ]);
@@ -38,4 +37,11 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
     }
+
+    //update admin password
+    public function updatePassword(){
+        return view('admin.update-password');
+    }
+
+
 }
