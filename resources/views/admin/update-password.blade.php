@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @push('title')
-    <title>Admin Dashboard</title>
+    <title>Admin-Update Password</title>
 @endpush
 @section('content')
 
@@ -45,6 +45,7 @@
                     <div class="form-group">
                       <label for="curent_password">Current Password</label>
                       <input type="password" name="curent_password" class="form-control" id="current_password" placeholder="Current Password">
+                    <div id="password-check"></div>
                     </div>
 
                     <div class="form-group">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -39,8 +40,18 @@ class AdminController extends Controller
     }
 
     //update admin password
-    public function updatePassword(){
-        return view('admin.update-password');
+    public function updatePassword(Request $request){
+        if($request->isMethod('get')){
+            return view('admin.update-password');
+        }else if($request->isMethod('post')){
+            $data = $request->all();
+            if(Hash::check($request->current_password, Auth::guard('admin')->user()->password)){
+                return "true";
+            }else{
+                return "false";
+            }
+        }
+
     }
 
 
