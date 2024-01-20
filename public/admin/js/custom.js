@@ -12,9 +12,13 @@ $(document).ready(function () {
             success: function (response) {
                 if(response == 'true'){
                     $('#password-check').html("");
+                    $('#password-check').removeClass("alert alert-danger");
+                    $("#password-check").addClass("alert alert-success");
                     $('#password-check').text("Password matched");
                 }else{
                     $('#password-check').html("");
+                    $('#password-check').removeClass("alert alert-success");
+                    $("#password-check").addClass("alert alert-danger");
                     $('#password-check').text("Password does not match");
                 }
             },

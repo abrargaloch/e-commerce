@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +45,7 @@ class AdminController extends Controller
         if($request->isMethod('get')){
             return view('admin.update-password');
         }else if($request->isMethod('post')){
-            $data = $request->all();
+
             if(Hash::check($request->current_password, Auth::guard('admin')->user()->password)){
                 return "true";
             }else{
@@ -52,6 +53,23 @@ class AdminController extends Controller
             }
         }
 
+    }
+
+    public function updateAdminPassword(Request $request){
+            //return $request->all();
+        if(Hash::check($request->curent_password, Auth::guard('admin')->user()->password)){
+            if($request->new_password == $request->confirm_password){
+                $admin = Admin::find(Auth::guard('admin')->user()->id);
+                if($admin){
+                    $admin->update(['password' => bcrypt($request->new_password)]);
+                    return redirect()->route('admin.update-password')->with('success', 'Admin password has been updated!');
+                }
+            }else{
+                return redirect()->route('admin.update-password')->with('error_match', 'Confirm password does not match!');
+            }
+        }else{
+            return redirect()->route('admin.update-password')->with('error_password', 'Incorrect password');
+        }
     }
 
 

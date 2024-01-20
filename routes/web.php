@@ -28,6 +28,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::middleware('admin')->group(function() {
        Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
        Route::match(['get', 'post'], '/update-password', 'updatePassword')->name('admin.update-password');
+       Route::post('/update-admin-password','updateAdminPassword')->name('update.admin-password');
 
     });
 

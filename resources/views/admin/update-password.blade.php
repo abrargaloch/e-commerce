@@ -36,7 +36,15 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
+                <form action="{{ route('update.admin-password') }}" method="post">
+                    @csrf
+                    @if (Session::has('success'))
+                        <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
+                    @elseif (Session::has('error_match'))
+                        <div class="alert alert-danger mt-3">{{ Session::get('error_match') }}</div>
+                    @elseif (Session::has('error_password'))
+                        <div class="alert alert-danger mt-3">{{ Session::get('error_password') }}</div>
+                    @endif
                   <div class="card-body">
                     <div class="form-group">
                       <label for="email">Email address</label>
@@ -50,7 +58,7 @@
 
                     <div class="form-group">
                       <label for="new_password">New Password</label>
-                      <input type="password" name="" class="form-control" id="new_password" placeholder="New Password">
+                      <input type="password" name="new_password" class="form-control" id="new_password" placeholder="New Password">
                     </div>
 
                     <div class="form-group">
